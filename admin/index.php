@@ -32,10 +32,17 @@
                        </div>
                        <div class="progress-detail" style="margin-left: 15px;">
                        <?php 
-                           $tanggal = date('Y-m-d');
-                           $pemasukan = mysqli_query($koneksi,"SELECT sum(transaksi_nominal) as total_pemasukan FROM transaksi WHERE transaksi_jenis='Pemasukan' and transaksi_tanggal='$tanggal'");
-                           $p = mysqli_fetch_assoc($pemasukan);
-                           ?>
+                            // Atur timezone ke Asia/Jakarta
+                            date_default_timezone_set("Asia/Jakarta");
+
+                            $tanggal = date('Y-m-d');
+                            $pemasukan = mysqli_query($koneksi,"SELECT SUM(transaksi_nominal) as total_pemasukan 
+                                                                FROM transaksi 
+                                                                WHERE transaksi_jenis='Pemasukan' 
+                                                                AND transaksi_tanggal='$tanggal'");
+                            $p = mysqli_fetch_assoc($pemasukan);
+                            ?>
+
                            <p style="margin: 0; font-size: 14px; color: #333;">
                                Pemasukan Hari Ini
                                <a href="transaksi.php"class="small-box-footer"
@@ -63,6 +70,7 @@
                         $bulan = date('m');
                         $pemasukan = mysqli_query($koneksi,"SELECT sum(transaksi_nominal) as total_pemasukan FROM transaksi WHERE transaksi_jenis='Pemasukan' and month(transaksi_tanggal)='$bulan'");
                         $p = mysqli_fetch_assoc($pemasukan);
+                        
                         ?>
                         <p style="margin: 0; font-size: 14px; color: #333;">
                                Pemasukan Bulan Ini
