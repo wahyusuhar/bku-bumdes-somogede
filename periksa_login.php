@@ -24,8 +24,8 @@ if($cek > 0){
 		$_SESSION['status'] = "manajemen_logedin";
 		header("location:manajemen/");
 	}else{
-		header("location:login.php?alert=gagal");
+		header("location:login.php?alert=bukan staff");
 	}
 }else{
-	header("location:login.php?alert=gagal");
+	header("location:login.php?alert=Login Gagal");
 }
