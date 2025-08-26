@@ -1,6 +1,29 @@
 <?php 
 include '../koneksi.php';
-$id  = $_GET['id'];
+$id = $_GET['id'];
 
-mysqli_query($koneksi, "delete from piutang where piutang_id='$id'");
-header("location:piutang.php");
+// Proses hapus data
+mysqli_query($koneksi, "DELETE FROM piutang WHERE piutang_id='$id'") or die(mysqli_error($koneksi));
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Dihapus</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+<script>
+  Swal.fire({
+    icon: 'success',
+    title: 'Data Dihapus!',
+    text: 'Data piutang berhasil dihapus.',
+    showConfirmButton: false,
+    timer: 2000
+  }).then(() => {
+    window.location.href = 'piutang.php';
+  });
+</script>
+</body>
+</html>

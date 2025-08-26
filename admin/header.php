@@ -5,12 +5,17 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Administrator - Sistem Informasi Keuangan</title>
+    <!-- Favicons -->
+    <link href="../gambar/sistem/logo.png" rel="icon">
 
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="../assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../assets/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <link rel="stylesheet" href="../assets/bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="../assets/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="./css/style.css">
 
   <link rel="stylesheet" href="../assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
@@ -21,6 +26,65 @@
   <link rel="stylesheet" href="../assets/bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <link rel="stylesheet" href="../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+
+<!-- ✅ Tambahkan CSS ini di <head> atau sebelum </body> -->
+<style>
+  @media (max-width: 768px) {
+    .card-body {
+      width: 270px;
+      
+        gap: 15px;
+    }
+    .card-list {
+        margin-left: -30px;
+        gap: 15px;
+    }
+    .swiper-slide{
+        margin-left: -30px;
+    }
+
+  }
+  
+  .swal-wide {
+    width: 400px !important;
+    padding: 20px !important;
+    font-size: 16px !important;
+  }
+  .swal-title-big {
+    font-size: 20px !important;
+  }
+  .swal-text-big {
+    font-size: 16px !important;
+  }
+  .swal-btn-big {
+    font-size: 16px !important;
+    padding: 8px 18px !important;
+  }
+
+
+  .swal-wide {
+    width: 400px !important;
+    padding: 20px !important;
+    font-size: 16px !important;
+  }
+  .swal-title-big {
+    font-size: 20px !important;
+  }
+  .swal-text-big {
+    font-size: 16px !important;
+  }
+  .swal-btn-big {
+    font-size: 16px !important;
+    padding: 8px 18px !important;
+  }
+
+
+
+
+</style>
+
+
 
   <?php
   include '../koneksi.php';
@@ -48,7 +112,7 @@
     <header class="main-header">
       <a href="index.php" class="logo">
         <span class="logo-mini"><b><i class="fa fa-money"></i></b> </span>
-        <span class="logo-lg"><b>Keuangan</b></span>
+        <span class="logo-lg"><b>DESA SOMOGEDE</b></span>
       </a>
       <nav class="navbar navbar-static-top">
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
@@ -74,125 +138,193 @@
               </a>
             </li>
             <li>
-              <a href="logout.php" onclick="return confirm('Apakah Anda yakin untuk logout?')">
-                <i class="fa fa-sign-out"></i> LOGOUT
-              </a>
-            </li>
+  <a href="#" onclick="konfirmasiLogout(event)">
+    <i class="fa fa-sign-out"></i> LOGOUT
+  </a>
+</li>
+
           </ul>
         </div>
       </nav>
     </header>
 
     <aside class="main-sidebar">
-      <section class="sidebar">
-        <div class="user-panel">
-          <div class="pull-left image">
-            <?php
-            $id_user = $_SESSION['id'];
-            $profil = mysqli_query($koneksi, "select * from user where user_id='$id_user'");
-            $profil = mysqli_fetch_assoc($profil);
-            if ($profil['user_foto'] == "") {
-            ?>
-              <img src="../gambar/sistem/user.png" class="img-circle">
-            <?php } else { ?>
-              <img src="../gambar/user/<?php echo $profil['user_foto'] ?>" class="img-circle" style="max-height:45px">
-            <?php } ?>
-          </div>
-          <div class="pull-left info">
-            <p><?php echo $_SESSION['nama']; ?></p>
-            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-          </div>
-        </div>
+  <section class="sidebar">
+    <div class="user-panel">
+      <div class="pull-left image">
+        <?php
+        $id_user = $_SESSION['id'];
+        $profil = mysqli_query($koneksi, "select * from user where user_id='$id_user'");
+        $profil = mysqli_fetch_assoc($profil);
+        if ($profil['user_foto'] == "") {
+        ?>
+          <img src="../gambar/sistem/user.png" class="img-circle" style="max-height:45px;">
+        <?php } else { ?>
+          <img src="../gambar/user/<?php echo $profil['user_foto'] ?>" class="img-circle" style="max-height:45px;">
+        <?php } ?>
+      </div>
+     
 
-        <ul class="sidebar-menu" data-widget="tree">
-          <li class="header">MAIN NAVIGATION</li>
 
-          <li>
-            <a href="index.php">
-              <i class="fa fa-dashboard"></i> <span>DASHBOARD</span>
-            </a>
-          </li>
+      <div class="pull-left info">
+        <p><?php echo $_SESSION['nama']; ?></p>
+        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+      </div>
+    </div>
+<!-- 
+    <ul class="sidebar-menu" data-widget="tree">
+      <li class="header">MAIN NAVIGATION</li>
 
-          <li>
-            <a href="kategori.php">
-              <i class="fa fa-folder"></i> <span>DATA KATEGORI</span>
-            </a>
-          </li>
+      <li>
+        <a href="index.php">
+          <i class="fa fa-dashboard"></i> <span style="margin-left:10px;">DASHBOARD</span>
+        </a>
+      </li>
 
-          <li>
-            <a href="transaksi.php">
-              <i class="fa fa-folder"></i> <span>DATA TRANSAKSI</span>
-            </a>
-          </li>
+      <li>
+        <a href="kategori.php">
+          <i class="fa-solid fa-layer-group"></i> <span style="margin-left:10px;">DATA KATEGORI</span>
+        </a>
+      </li>
 
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-hand-paper-o"></i>
-              <span>HUTANG PIUTANG</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu" style="display: none;">
-              <li><a href="hutang.php"><i class="fa fa-circle-o"></i> Catatan Hutang</a></li>
-              <li><a href="piutang.php"><i class="fa fa-circle-o"></i> Catatan Piutang</a></li>
-            </ul>
-          </li>
+      <li>
+        <a href="transaksi.php">
+          <i class="fa-solid fa-credit-card"></i> <span style="margin-left:10px;">DATA TRANSAKSI</span>
+        </a>
+      </li>
 
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-dollar"></i>
-              <span>RINCIAN TRANSAKSI</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu" style="display: none;">
-              <li><a href="transaksi_bsi.php"><i class="fa fa-circle-o"></i> BANK BSI</a></li>
-              <li><a href="transaksi_bca.php"><i class="fa fa-circle-o"></i> BANK BCA</a></li>
-              <li><a href="transaksi_cash.php"><i class="fa fa-circle-o"></i> CASH</a></li>
-            </ul>
-          </li>
-
-          <li>
-            <a href="bank.php">
-              <i class="fa fa-building"></i> <span>REKENING BANK</span>
-            </a>
-          </li>
-
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-users"></i>
-              <span>DATA PENGGUNA</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu" style="display: none;">
-              <li><a href="user.php"><i class="fa fa-circle-o"></i> Data Pengguna</a></li>
-              <li><a href="user_tambah.php"><i class="fa fa-circle-o"></i> Tambah Pengguna</a></li>
-            </ul>
-          </li>
-
-          <li>
-            <a href="laporan.php">
-              <i class="fa fa-file"></i> <span>LAPORAN</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="gantipassword.php">
-              <i class="fa fa-lock"></i> <span>GANTI PASSWORD</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="logout.php" onclick="return confirm('Apakah Anda yakin untuk logout?')">
-              <i class="fa fa-sign-out"></i> <span>LOGOUT</span>
-            </a>
-          </li>
-
+      <li class="treeview">
+        <a href="#">
+          <i class="fa-solid fa-book"></i>
+          <span style="margin-left:10px;">HUTANG PIUTANG</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="hutang.php"><i class="fa fa-circle-o"></i> <span style="margin-left:5px;">Catatan Hutang</span></a></li>
+          <li><a href="piutang.php"><i class="fa fa-circle-o"></i> <span style="margin-left:5px;">Catatan Piutang</span></a></li>
         </ul>
-      </section>
-      <!-- /.sidebar -->
-    </aside>
+      </li>
+
+      <li>
+        <a href="pejabat.php">
+          <i class="fa-solid fa-user-tie"></i> <span style="margin-left:10px;">DATA PENGURUS</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="bank.php">
+          <i class="fa fa-building"></i> <span style="margin-left:10px;">REKENING BANK</span>
+        </a>
+      </li>
+
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-users"></i>
+          <span style="margin-left:10px;">DATA PENGGUNA</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="user.php"><i class="fa fa-circle-o"></i> <span style="margin-left:5px;">Data Pengguna</span></a></li>
+          <li><a href="user_tambah.php"><i class="fa fa-circle-o"></i> <span style="margin-left:5px;">Tambah Pengguna</span></a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="laporan.php">
+          <i class="fa-solid fa-book-open"></i> <span style="margin-left:10px;">LAPORAN</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="gantipassword.php">
+          <i class="fa fa-lock"></i> <span style="margin-left:10px;">GANTI PASSWORD</span>
+        </a>
+      </li>
+    </ul> -->
+
+
+    <?php $page = basename($_SERVER['PHP_SELF']); ?>
+
+
+
+<ul class="sidebar-menu" data-widget="tree">
+  <li class="header">MAIN NAVIGATION</li>
+
+  <li class="<?= ($page == 'index.php') ? 'active' : '' ?>">
+    <a href="index.php">
+      <i class="fa fa-dashboard"></i> <span style="margin-left:10px;">DASHBOARD</span>
+    </a>
+  </li>
+
+  <li class="<?= ($page == 'kategori.php') ? 'active' : '' ?>">
+    <a href="kategori.php">
+      <i class="fa-solid fa-layer-group"></i> <span style="margin-left:10px;">DATA KATEGORI</span>
+    </a>
+  </li>
+
+  <li class="<?= ($page == 'transaksi.php') ? 'active' : '' ?>">
+    <a href="transaksi.php">
+      <i class="fa-solid fa-credit-card"></i> <span style="margin-left:10px;">DATA TRANSAKSI</span>
+    </a>
+  </li>
+
+  <li class="treeview <?= ($page == 'hutang.php' || $page == 'piutang.php') ? 'active' : '' ?>">
+    <a href="#">
+      <i class="fa-solid fa-book"></i>
+      <span style="margin-left:10px;">HUTANG PIUTANG</span>
+      <span class="pull-right-container">
+        <i class="fa fa-angle-left pull-right"></i>
+      </span>
+    </a>
+    <ul class="treeview-menu">
+      <li class="<?= ($page == 'hutang.php') ? 'active' : '' ?>"><a href="hutang.php"><i class="fa fa-circle-o"></i> <span style="margin-left:5px;">Catatan Hutang</span></a></li>
+      <li class="<?= ($page == 'piutang.php') ? 'active' : '' ?>"><a href="piutang.php"><i class="fa fa-circle-o"></i> <span style="margin-left:5px;">Catatan Piutang</span></a></li>
+    </ul>
+  </li>
+
+  <li class="<?= ($page == 'pejabat.php') ? 'active' : '' ?>">
+    <a href="pejabat.php">
+      <i class="fa-solid fa-user-tie"></i> <span style="margin-left:10px;">DATA PENGURUS</span>
+    </a>
+  </li>
+
+  <li class="<?= ($page == 'bank.php') ? 'active' : '' ?>">
+    <a href="bank.php">
+      <i class="fa fa-building"></i> <span style="margin-left:10px;">REKENING BANK</span>
+    </a>
+  </li>
+
+  <li class="treeview <?= ($page == 'user.php' || $page == 'user_tambah.php') ? 'active' : '' ?>">
+    <a href="#">
+      <i class="fa fa-users"></i>
+      <span style="margin-left:10px;">DATA PENGGUNA</span>
+      <span class="pull-right-container">
+        <i class="fa fa-angle-left pull-right"></i>
+      </span>
+    </a>
+    <ul class="treeview-menu">
+      <li class="<?= ($page == 'user.php') ? 'active' : '' ?>"><a href="user.php"><i class="fa fa-circle-o"></i> <span style="margin-left:5px;">Data Pengguna</span></a></li>
+      <li class="<?= ($page == 'user_tambah.php') ? 'active' : '' ?>"><a href="user_tambah.php"><i class="fa fa-circle-o"></i> <span style="margin-left:5px;">Tambah Pengguna</span></a></li>
+    </ul>
+  </li>
+
+  <li class="<?= ($page == 'laporan.php') ? 'active' : '' ?>">
+    <a href="laporan.php">
+      <i class="fa-solid fa-book-open"></i> <span style="margin-left:10px;">LAPORAN</span>
+    </a>
+  </li>
+
+  <li class="<?= ($page == 'gantipassword.php') ? 'active' : '' ?>">
+    <a href="gantipassword.php">
+      <i class="fa fa-lock"></i> <span style="margin-left:10px;">GANTI PASSWORD</span>
+    </a>
+  </li>
+</ul>
+
+
+  </section>
+</aside>

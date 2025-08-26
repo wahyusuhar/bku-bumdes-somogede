@@ -3,7 +3,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0
     </div>
-    <strong>Copyright CV.Atasee &copy; 2023</strong> - Sistem Informasi Laporan Keuangan CV.ATASEE
+    <strong>Copyright by KPM 10 &copy; 2025</strong> - Sistem Manajemen Pendapatan
   </footer>
 
   
@@ -52,8 +52,78 @@
 <script src="../assets/dist/js/demo.js"></script>
 <script src="../assets/bower_components/ckeditor/ckeditor.js"></script>
 <script src="../assets/bower_components/chart.js/Chart.min.js"></script>
+<!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<?php
+if (isset($_GET['alert'])) {
+  echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+  echo "<style>
+    .swal-title-lg { font-size: 30px !important; }
+    .swal-popup-lg { font-size: 20px !important; padding: 2em !important; }
+    .swal-confirm-lg { font-size: 18px !important; padding: 0.75em 2em !important; }
+  </style>";
+  echo "<script>";
+  if ($_GET['alert'] == "logout") {
+    echo "Swal.fire({
+      icon: 'success',
+      title: 'Logout Berhasil!',
+      text: 'Anda telah keluar dari sistem.',
+      width: '600px',
+      customClass: {
+        title: 'swal-title-lg',
+        popup: 'swal-popup-lg',
+        confirmButton: 'swal-confirm-lg'
+      }
+    });";
+  }
+  echo "</script>";
+}
+?>
 
 <script>
+
+  
+  function konfirmasiLogout(event) {
+    event.preventDefault(); // Mencegah link langsung dijalankan
+
+    Swal.fire({
+      title: 'Keluar dari sistem?',
+      text: "Apakah Anda yakin ingin logout?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, Logout',
+      cancelButtonText: 'Batal',
+
+      // ✅ Tambahan untuk memperbesar tampilannya
+      customClass: {
+        popup: 'swal-wide',
+        title: 'swal-title-big',
+        content: 'swal-text-big',
+        confirmButton: 'swal-btn-big',
+        cancelButton: 'swal-btn-big'
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = 'logout.php';
+      }
+    });
+  }
+
+
+
+</script>
+
+
+
+
+<script>
+
   $(document).ready(function(){
 
    // $(".edit").hide();

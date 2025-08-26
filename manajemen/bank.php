@@ -26,12 +26,14 @@
             <div class="table-responsive">
               <table class="table table-bordered table-striped" id="table-datatable">
                 <thead>
+                
                   <tr>
-                    <th width="1%">NO</th>
-                    <th>NAMA BANK</th>
-                    <th>PEMILIK REKENING</th>
-                    <th>NOMOR REKENING</th>
-                    <th>SALDO</th>
+                    <th width="1%" style="background-color: #00c0ef; color: white; text-align: center">NO</th>
+                    <th style="background-color: #00c0ef; color: white; text-align: center">NAMA BANK</th>
+                    <th style="background-color: #00c0ef; color: white;text-align: center">PEMILIK REKENING</th>
+                    <th style="background-color: #00c0ef; color: white;text-align: center">NOMOR REKENING</th>
+                    <th style="background-color: #00c0ef; color: white;text-align: center">SALDO</th>
+                  
                   </tr>
                 </thead>
                 <tbody>
@@ -41,13 +43,14 @@
                   $data = mysqli_query($koneksi,"SELECT * FROM bank");
                   while($d = mysqli_fetch_array($data)){
                     ?>
-                    <tr>
-                      <td><?php echo $no++; ?></td>
-                      <td><?php echo $d['bank_nama']; ?></td>
-                      <td><?php echo $d['bank_pemilik']; ?></td>
-                      <td><?php echo $d['bank_nomor']; ?></td>
-                      <td><?php echo "Rp. ".number_format($d['bank_saldo'])." ,-"; ?></td>
-                    </tr>
+                 <tr>
+                    <td style="text-align: center; vertical-align: middle;"><?php echo $no++; ?></td>
+                    <td style="text-align: center; vertical-align: middle;"><?php echo $d['bank_nama']; ?></td>
+                    <td style="text-align: center; vertical-align: middle;"><?php echo $d['bank_pemilik']; ?></td>
+                    <td style="text-align: center; vertical-align: middle;"><?php echo $d['bank_nomor']; ?></td>
+                    <td style="text-align: center; vertical-align: middle;"><?php echo "Rp. ".number_format($d['bank_saldo'])." ,-"; ?></td>
+                  </tr>
+
                     <?php 
                   }
                   ?>

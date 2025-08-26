@@ -27,8 +27,8 @@
               <table class="table table-bordered table-striped" id="table-datatable">
                 <thead>
                   <tr>
-                    <th width="1%">NO</th>
-                    <th>NAMA</th>
+                    <th width="1%" style="background-color: #00c0ef; color: white;text-align: center">NO</th>
+                    <th style="background-color: #00c0ef; color: white;">NAMA</th>
                   </tr>
                 </thead>
                 <tbody>

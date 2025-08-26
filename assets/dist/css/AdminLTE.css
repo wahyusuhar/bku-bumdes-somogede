@@ -93,7 +93,7 @@ body {
 .main-footer {
   background: #fff;
   padding: 15px;
-  color: #444;
+  color: #fdf8f8;
   border-top: 1px solid #d2d6de;
 }
 /* Fixed layout */
@@ -209,7 +209,7 @@ a:focus {
 }
 .main-header #navbar-search-input.form-control:focus,
 .main-header #navbar-search-input.form-control:active {
-  border-color: rgba(0, 0, 0, 0.1);
+  border-color: rgba(233, 228, 228, 0.1);
   background: rgba(255, 255, 255, 0.9);
 }
 .main-header #navbar-search-input.form-control::-moz-placeholder {

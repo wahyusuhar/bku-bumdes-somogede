@@ -118,6 +118,20 @@
       </tr>
     </table>
 
+    <!-- <br><br>
+<table style="width:100%; text-align: center; margin-top: 50px;">
+  <tr>
+    <td style="width: 50%;">
+      Sekretaris<br><br><br><br>
+      <u><strong>Siti Aminah</strong></u>
+    </td>
+    <td style="width: 50%;">
+      Bendahara<br><br><br><br>
+      <u><strong>Ahmad Fauzi</strong></u>
+    </td>
+  </tr>
+</table> -->
+
     <?php 
   }else{
     ?>

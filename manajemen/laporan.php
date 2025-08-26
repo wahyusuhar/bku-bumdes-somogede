@@ -124,19 +124,21 @@
               <a href="laporan_print.php?tanggal_dari=<?php echo $tgl_dari ?>&tanggal_sampai=<?php echo $tgl_sampai ?>&kategori=<?php echo $kategori ?>" target="_blank" class="btn btn-sm btn-primary"><i class="fa fa-print"></i> &nbsp PRINT</a>
               <div class="table-responsive">
                 <table class="table table-bordered table-striped">
+
                   <thead>
-                    <tr>
-                      <th width="1%" rowspan="2">NO</th>
-                      <th width="10%" rowspan="2" class="text-center">TANGGAL</th>
-                      <th rowspan="2" class="text-center">KATEGORI</th>
-                      <th rowspan="2" class="text-center">KETERANGAN</th>
-                      <th colspan="2" class="text-center">JENIS</th>
-                    </tr>
-                    <tr>
-                      <th class="text-center">PEMASUKAN</th>
-                      <th class="text-center">PENGELUARAN</th>
-                    </tr>
-                  </thead>
+                  <tr>
+                    <th width="1%" rowspan="2"style="background-color: #00c0ef; color: white;">NO</th>
+                    <th width="10%" rowspan="2" class="text-center"style="background-color: #00c0ef; color: white;">TANGGAL</th>
+                    <th rowspan="2" class="text-center"style="background-color: #00c0ef; color: white;">KATEGORI</th>
+                    <th rowspan="2" class="text-center"style="background-color: #00c0ef; color: white;">KETERANGAN</th>
+                    <th colspan="2" class="text-center"style="background-color: #00c0ef; color: white;">JENIS</th>
+                    
+                  </tr>
+                  <tr>
+                    <th class="text-center"style="background-color: #16AB08FF; color: white;">PEMASUKAN</th>
+                    <th class="text-center"style="background-color: #E80C17FF; color: white;">PENGELUARAN</th>
+                  </tr>
+                </thead>
                   <tbody>
                     <?php 
                     include '../koneksi.php';
